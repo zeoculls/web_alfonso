@@ -483,11 +483,10 @@ h1, h2, h3, h4, h5, h6 {
 .diagnostico-slogan {
     text-align: center;
     font-size: 1.3rem;
-    color: #0c71c3;
+    color: white;
     margin-top: 40px;
     padding: 20px;
     background: linear-gradient(135deg, #0c71c3, #095a9e);
-    color: white;
     border-radius: 15px;
 }
 
