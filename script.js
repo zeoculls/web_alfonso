@@ -427,6 +427,7 @@ const translations = {
         'nav-diagnostico': 'Diagnóstico',
         'nav-tratamiento': 'Tratamiento',
         'nav-rehabilitacion': 'Rehabilitación',
+        'nav-clinica': 'Clínica',
         'nav-equipo': 'Equipo',
         'nav-contacto': 'Contacto',
         // Hero Slider
@@ -549,6 +550,7 @@ const translations = {
         'nav-diagnostico': 'Diagnosis',
         'nav-tratamiento': 'Treatment',
         'nav-rehabilitacion': 'Rehabilitation',
+        'nav-clinica': 'Clinic',
         'nav-equipo': 'Team',
         'nav-contacto': 'Contact',
         // Hero Slider

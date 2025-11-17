@@ -223,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slide:nth-child(1) {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/hero-1.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/hero-1.png');
 }
 
 .slide:nth-child(2) {
@@ -953,7 +953,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Footer */
-#main-footer {
+.main-footer {
     background: #333;
     color: white;
     padding: 60px 0 20px;
