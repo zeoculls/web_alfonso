@@ -1214,6 +1214,9 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-track {
@@ -1275,16 +1278,100 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
     .clinic-gallery-section {
-        padding: 60px 0;
+        padding: 40px 0;
     }
     
     .gallery-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
         padding: 0 20px;
         margin-bottom: 30px;
+        line-height: 1.5;
+    }
+    
+    .clinic-carousel {
+        padding: 0 10px;
     }
     
     .carousel-container {
-        height: 300px;
+        height: auto;
+        min-height: 250px;
+        max-height: 400px;
+        aspect-ratio: 4/3;
+    }
+    
+    .carousel-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .carousel-slide img {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+    
+    .carousel-dots {
+        margin-top: 15px;
+        gap: 8px;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .carousel-dot.active {
+        width: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clinic-gallery-section {
+        padding: 30px 0;
+    }
+    
+    .gallery-description {
+        font-size: 0.9rem;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+    
+    .clinic-carousel {
+        padding: 0 5px;
+    }
+    
+    .carousel-container {
+        min-height: 200px;
+        max-height: 300px;
+        aspect-ratio: 4/3;
+    }
+    
+    .carousel-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .carousel-slide img {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+    
+    .carousel-dots {
+        margin-top: 10px;
+        gap: 6px;
+    }
+    
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .carousel-dot.active {
+        width: 20px;
     }
 } 
