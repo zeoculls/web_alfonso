@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica TRR - Especialistas en Traumatología, Radiología y Rehabilitación</title>
-    <meta name="description" content="Bienvenido a Clínica TRR, especialistas en diagnóstico y tratamiento integral del dolor articular y patologías musculoesqueléticas en Madrid. Tecnología avanzada y atención personalizada.">
+    <title>Clínica Maldonado&Herrero - Especialistas en Traumatología, Radiología y Rehabilitación</title>
+    <meta name="description" content="Bienvenido a Clínica Maldonado&Herrero, especialistas en diagnóstico y tratamiento integral del dolor articular y patologías musculoesqueléticas en Madrid. Tecnología avanzada y atención personalizada.">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/favicon.png" sizes="32x32">
@@ -27,10 +27,19 @@
                 <span class="phone"><i class="fas fa-phone"></i> 91 146 59 14</span>
                 <a href="mailto:dr.alfonsomaldonado@gmail.com" class="email"><i class="fas fa-envelope"></i> dr.alfonsomaldonado@gmail.com</a>
             </div>
-            <div class="social-icons">
-                <a href="https://instagram.com/clinicatrr" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://facebook.com/clinicatrr" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="https://linkedin.com/company/clinicatrr" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <div class="header-right">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="es" title="Español">
+                        <span class="flag-icon">🇪🇸</span> ES
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <span class="flag-icon">🇬🇧</span> EN
+                    </button>
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/clinicatrr" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/clinicatrr" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -40,17 +49,17 @@
         <div class="container">
             <div class="logo">
                 <a href="/">
-                    <img src="assets/logo.png" alt="Clínica TRR" id="logo">
+                    <img src="assets/logo.png" alt="Maldonado&Herrero. Clínica del Dolor Articular y Osteomuscular" id="logo">
                 </a>
             </div>
             <nav id="main-nav">
                 <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#diagnostico">Diagnóstico</a></li>
-                    <li><a href="#tratamiento">Tratamiento</a></li>
-                    <li><a href="#rehabilitacion">Rehabilitación</a></li>
-                    <li><a href="#equipo">Equipo</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio" data-i18n="nav-inicio">Inicio</a></li>
+                    <li><a href="#diagnostico" data-i18n="nav-diagnostico">Diagnóstico</a></li>
+                    <li><a href="#tratamiento" data-i18n="nav-tratamiento">Tratamiento</a></li>
+                    <li><a href="#rehabilitacion" data-i18n="nav-rehabilitacion">Rehabilitación</a></li>
+                    <li><a href="#equipo" data-i18n="nav-equipo">Equipo</a></li>
+                    <li><a href="#contacto" data-i18n="nav-contacto">Contacto</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-toggle">
@@ -65,23 +74,32 @@
     <section class="hero-slider">
         <div class="slide active">
             <div class="slide-content">
-                <h2>Clínica TRR</h2>
-                <p>Especialistas en Traumatología, Radiología y Rehabilitación</p>
-                <a href="#diagnostico" class="cta-button">Nuestro Diagnóstico</a>
+                <h2 data-i18n="hero-title-1">Maldonado&Herrero. Clínica del Dolor Articular y Osteomuscular</h2>
+                <p data-i18n="hero-subtitle-1">Especialistas en Traumatología, Radiología y Rehabilitación</p>
+                <a href="#diagnostico" class="cta-button" data-i18n="hero-cta-1">Nuestro Diagnóstico</a>
             </div>
         </div>
         <div class="slide">
             <div class="slide-content">
-                <h2>Diagnóstico Integral</h2>
-                <p>Anamnesis + Exploración Física + Pruebas de Imagen en una misma consulta</p>
-                <a href="#tratamiento" class="cta-button">Ver Tratamientos</a>
+                <h2 data-i18n="hero-title-2">Diagnóstico Preciso</h2>
+                <p data-i18n="hero-subtitle-2">Realización y valoración de pruebas de imagen en la misma consulta</p>
+                <a href="#tratamiento" class="cta-button" data-i18n="hero-cta-2">Ver Tratamientos</a>
             </div>
         </div>
         <div class="slide">
             <div class="slide-content">
-                <h2>Equipo Especializado</h2>
-                <p>Profesionales con años de experiencia en patologías musculoesqueléticas</p>
-                <a href="#equipo" class="cta-button">Conoce Nuestro Equipo</a>
+                <h2 data-i18n="hero-title-3">Equipo Especializado</h2>
+                <p data-i18n="hero-subtitle-3">Expertos en traumatología, rehabilitación e imagen</p>
+                <div class="what-we-do">
+                    <h3>¿Qué realizamos?</h3>
+                    <ul class="check-list">
+                        <li>Diagnóstico de alta precisión.</li>
+                        <li>Ecografía: ecógrafo de alta gama con médico especialista en radiología.</li>
+                        <li>Tratamientos dirigidos no quirúrgicos: infiltraciones ecoguiadas, técnicas percutáneas mínimamente invasivas, ondas de choque.</li>
+                        <li>Rehabilitación: médico especialista en rehabilitación.</li>
+                    </ul>
+                </div>
+                <a href="#equipo" class="cta-button" data-i18n="hero-cta-3">Conoce Nuestro Equipo</a>
             </div>
         </div>
         <div class="slider-controls">
@@ -98,8 +116,8 @@
     <!-- Welcome Section -->
     <section class="welcome-section">
         <div class="container">
-            <h1 class="section-title">BIENVENIDO A CLÍNICA TRR</h1>
-            <p class="section-subtitle">Especialistas en Traumatología, Radiología y Rehabilitación</p>
+            <h1 class="section-title" data-i18n="welcome-title">BIENVENIDO A CLÍNICA Maldonado&Herrero. Clínica del Dolor Articular y Osteomuscular</h1>
+            <p class="section-subtitle" data-i18n="welcome-subtitle">Especialistas en Traumatología, Radiología y Rehabilitación</p>
         </div>
     </section>
 
@@ -111,36 +129,45 @@
                     <div class="service-icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
-                    <h3>Diagnóstico Integral</h3>
-                    <p>Anamnesis + Exploración Física + Pruebas de Imagen en una misma consulta para un diagnóstico preciso y rápido.</p>
-                    <a href="#diagnostico" class="service-button">Saber más</a>
+                    <h3 data-i18n="service-diagnostico">Diagnóstico</h3>
+                    <p data-i18n="service-diagnostico-desc">Anamnesis + Exploración Física + Pruebas de Imagen en una misma consulta para un diagnóstico preciso y rápido.</p>
+                    <a href="#diagnostico" class="service-button" data-i18n="saber-mas">Saber más</a>
                 </div>
                 
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 data-i18n="service-ecografia">Ecografía Musculoesquelética</h3>
+                    <p data-i18n="service-ecografia-desc">Ecógrafo de alta gama con informe detallado y explicado por radiólogo especializado en la misma consulta.</p>
+                    <a href="#diagnostico" class="service-button" data-i18n="saber-mas">Saber más</a>
+                </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h3>Tratamiento No Quirúrgico</h3>
-                    <p>Fisioterapia, ondas de choque, infiltraciones ecoguiadas y técnicas percutáneas mínimamente invasivas.</p>
-                    <a href="#tratamiento" class="service-button">Saber más</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-ultrasound"></i>
-                    </div>
-                    <h3>Ecografía Musculoesquelética</h3>
-                    <p>Ecógrafo de referencia con informe detallado elaborado por radiólogo especializado en la misma consulta.</p>
-                    <a href="#diagnostico" class="service-button">Saber más</a>
+                    <h3 data-i18n="service-tratamiento">Tratamiento No Quirúrgico</h3>
+                    <p data-i18n="service-tratamiento-desc">Ejercicios dirigidos, ondas de choque, infiltraciones dirigidas por ecografía (ecoguiadas) y técnicas percutáneas mínimamente invasivas.</p>
+                    <a href="#tratamiento" class="service-button" data-i18n="saber-mas">Saber más</a>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-dumbbell"></i>
                     </div>
-                    <h3>Rehabilitación Especializada</h3>
-                    <p>Ejercicios dirigidos por patología para recuperar la funcionalidad y mejorar la calidad de vida.</p>
-                    <a href="#rehabilitacion" class="service-button">Saber más</a>
+                    <h3 data-i18n="service-rehabilitacion">Rehabilitación Especializada</h3>
+                    <p data-i18n="service-rehabilitacion-desc">Ejercicios dirigidos por patología para recuperar la funcionalidad y mejorar la calidad de vida.</p>
+                    <a href="#rehabilitacion" class="service-button" data-i18n="saber-mas">Saber más</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 data-i18n="service-seguimiento">Seguimiento</h3>
+                    <p data-i18n="service-seguimiento-desc">Tras el tratamiento, realizaremos un seguimiento de la evolución del paciente.</p>
+                    <a href="#rehabilitacion" class="service-button" data-i18n="saber-mas">Saber más</a>
                 </div>
             </div>
         </div>
@@ -149,20 +176,23 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>¿Te gustaría que valorásemos tu caso?</h2>
-                                <p>Puedes contactar con nosotros llamando al <strong>91 146 59 14</strong> o en el correo <strong>dr.alfonsomaldonado@gmail.com</strong></p>
-            <a href="#contacto" class="cta-button">CONTACTA</a>
+            <h2 data-i18n="cta-title">¿Te gustaría que valorásemos tu caso?</h2>
+            <p><span data-i18n="cta-text">Puedes contactar con nosotros llamando al</span> <strong>91 146 59 14</strong> <span data-i18n="cta-text-2">o en el correo</span> <strong>dr.alfonsomaldonado@gmail.com</strong></p>
+            <a href="#contacto" class="cta-button" data-i18n="cta-button">CONTACTA</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about-section">
         <div class="container">
-            <h2 class="section-title">¿Por qué elegir Clínica TRR?</h2>
+            <h2 class="section-title" data-i18n="about-title">¿Por qué elegir Clínica Maldonado&Herrero?</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>En Clínica TRR nos dedicamos al diagnóstico y tratamiento integral del dolor articular y las patologías musculoesqueléticas. Nuestro enfoque combina la experiencia clínica con la tecnología más avanzada para ofrecerte una atención precisa, personalizada y efectiva.</p>
-                    <p>Creemos que un buen tratamiento empieza por un diagnóstico acertado. Por eso, unimos una minuciosa exploración física con la mejor interpretación de pruebas de imagen para identificar con precisión el origen del problema. Ofrecemos soluciones eficaces y mínimamente invasivas para mejorar tu calidad de vida sin necesidad de cirugía.</p>
+                    <ol class="about-list">
+                        <li data-i18n="about-point-1">Nuestra filosofía se basa en realizar un diagnóstico preciso para poder ofrecer el tratamiento más adecuado, complementado con un seguimiento personalizado.</li>
+                        <li data-i18n="about-point-2">Nuestro objetivo será mejorar su calidad de vida.</li>
+                        <li data-i18n="about-point-3">En la clínica nos dedicamos al diagnóstico y tratamiento integral del dolor articular y la patología musculoesquelética. Nuestro enfoque combina la experiencia clínica con la tecnología más avanzada para ofrecerte una atención precisa, personalizada y efectiva.</li>
+                    </ol>
                 </div>
                 <div class="about-image">
                     <img src="assets/clinica-interior.jpg" alt="Interior de la clínica">
@@ -174,43 +204,39 @@
     <!-- Diagnóstico Section -->
     <section id="diagnostico" class="diagnostico-section">
         <div class="container">
-            <h2 class="section-title">DIAGNÓSTICO</h2>
+            <h2 class="section-title" data-i18n="section-diagnostico">DIAGNÓSTICO</h2>
             <div class="diagnostico-content">
                 <div class="diagnostico-text">
-                    <p>En Clínica TRR creemos que un diagnóstico de calidad se basa en tres pilares fundamentales:</p>
                     <div class="pilares">
                         <div class="pilar">
                             <i class="fas fa-user-md"></i>
-                            <h4>Anamnesis</h4>
+                            <h4 data-i18n="diagnostico-pilar-1-title">Consulta con médico especialista</h4>
+                            <p data-i18n="diagnostico-pilar-1-desc">Consulta con médico especialista en Traumatología y/o Rehabilitación. Si tiene pruebas de imagen previas serán valoradas por médico radiólogo especialista en musculoesquelético para un diagnóstico más preciso.</p>
                         </div>
                         <div class="pilar">
-                            <i class="fas fa-hand-holding-medical"></i>
-                            <h4>Exploración Física</h4>
-                        </div>
-                        <div class="pilar">
-                            <i class="fas fa-x-ray"></i>
-                            <h4>Pruebas de Imagen</h4>
+                            <i class="fas fa-wave-square"></i>
+                            <h4 data-i18n="diagnostico-pilar-2-title">Ecografía de alta gama</h4>
+                            <p data-i18n="diagnostico-pilar-2-desc">Ecografía de alta gama realizada por médico especialista en radiología con realización de informe radiológico completo.</p>
                         </div>
                     </div>
-                    <p>Nos diferenciamos por integrar estos tres elementos en una misma consulta, permitiéndonos llegar al diagnóstico más exacto de forma rápida y eficaz.</p>
                     
                     <div class="diagnostico-features">
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
                             <div>
-                                <h4>Solicitamos solo las pruebas necesarias</h4>
-                                <p>Te indicaremos únicamente las pruebas de imagen que realmente se requieran, y si ya cuentas con estudios previos realizados en otro centro, nuestros especialistas los revisarán e interpretarán durante tu visita.</p>
+                                <h4 data-i18n="diagnostico-feature-1-title">Solicitamos solo las pruebas necesarias</h4>
+                                <p data-i18n="diagnostico-feature-1-desc">Te indicaremos únicamente las pruebas de imagen que realmente se requieran, y si ya cuentas con estudios previos realizados en otro centro, nuestros especialistas los revisarán e interpretarán durante tu visita.</p>
                             </div>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-ultrasound"></i>
+                            <i class="fas fa-wave-square"></i>
                             <div>
-                                <h4>Ecografía musculoesquelética, en el momento</h4>
-                                <p>Contamos con ecógrafo de referencia y realizamos ecografías musculoesqueléticas con informe detallado, elaborado por un radiólogo especializado en este campo en la misma consulta.</p>
+                                <h4 data-i18n="diagnostico-feature-2-title">Ecografía musculoesquelética, en el momento</h4>
+                                <p data-i18n="diagnostico-feature-2-desc">Contamos con ecógrafo de referencia y realizamos ecografías musculoesqueléticas con informe detallado, elaborado por un radiólogo especializado en este campo en la misma consulta.</p>
                             </div>
                         </div>
                     </div>
-                    <p class="diagnostico-slogan"><strong>Diagnóstico integral y sin esperas. Consulta tu caso en Clínica TRR.</strong></p>
+                    <p class="diagnostico-slogan"><strong data-i18n="diagnostico-slogan">Diagnóstico integral y sin esperas. Consulta tu caso en Clínica Maldonado&Herrero.</strong></p>
                 </div>
             </div>
         </div>
@@ -219,42 +245,43 @@
     <!-- Tratamiento Section -->
     <section id="tratamiento" class="tratamiento-section">
         <div class="container">
-            <h2 class="section-title">TRATAMIENTO</h2>
+            <h2 class="section-title" data-i18n="section-tratamiento">TRATAMIENTO</h2>
             <div class="tratamiento-content">
                 <div class="tratamiento-intro">
-                    <p>Tras una valoración integral y un diagnóstico preciso, recomendaremos el tratamiento más adecuado para cada caso, <strong>priorizando siempre las opciones más conservadoras antes de considerar la cirugía</strong>.</p>
-                    <p>Nuestros tratamientos se basan en evidencia científica y se adaptan a las necesidades de cada paciente.</p>
+                    <p data-i18n="tratamiento-intro-1">Tras una valoración integral y un diagnóstico preciso, recomendaremos el tratamiento más adecuado para cada caso, <strong>priorizando siempre las opciones más conservadoras antes de considerar la cirugía</strong>.</p>
+                    <p data-i18n="tratamiento-intro-2">Nuestros tratamientos se basan en evidencia científica y se adaptan a las necesidades de cada paciente.</p>
                 </div>
                 
                 <div class="tratamiento-opciones">
-                    <h3>Opciones de tratamiento no quirúrgico:</h3>
+                    <h3 data-i18n="tratamiento-opciones-title">Opciones de tratamiento no quirúrgico:</h3>
                     <div class="opciones-grid">
                         <div class="opcion">
                             <i class="fas fa-dumbbell"></i>
-                            <h4>Fisioterapia con ejercicios dirigidos</h4>
-                        </div>
-                        <div class="opcion">
-                            <i class="fas fa-wave-square"></i>
-                            <h4>Ondas de choque</h4>
+                            <h4 data-i18n="tratamiento-opcion-1">Fisioterapia con ejercicios dirigidos</h4>
                         </div>
                         <div class="opcion">
                             <i class="fas fa-syringe"></i>
-                            <h4>Infiltraciones ecoguiadas</h4>
-                            <p>(seguras y precisas gracias al control por imagen)</p>
+                            <h4 data-i18n="tratamiento-opcion-2">Infiltraciones ecoguiadas</h4>
+                            <p data-i18n="tratamiento-opcion-2-desc">(seguras y precisas gracias al control por imagen)</p>
                             <ul>
-                                <li>Cortico-anestésicas</li>
-                                <li>Ácido hialurónico</li>
-                                <li>Plasma Rico en Plaquetas (PRP)</li>
+                                <li data-i18n="tratamiento-opcion-2-item-1">Cortico-anestésicas</li>
+                                <li data-i18n="tratamiento-opcion-2-item-2">Ácido hialurónico</li>
+                                <li data-i18n="tratamiento-opcion-2-item-3">Plasma Rico en Plaquetas (PRP)</li>
                             </ul>
                         </div>
                         <div class="opcion">
                             <i class="fas fa-microscope"></i>
-                            <h4>Técnicas percutáneas ecoguiadas</h4>
-                            <p>Mínimamente invasivas</p>
+                            <h4 data-i18n="tratamiento-opcion-3">Técnicas percutáneas ecoguiadas</h4>
+                            <p data-i18n="tratamiento-opcion-3-desc">Mínimamente invasivas</p>
+                        </div>
+                        <div class="opcion">
+                            <i class="fas fa-wave-square"></i>
+                            <h4 data-i18n="tratamiento-opcion-4">Ondas de choque focales</h4>
                         </div>
                         <div class="opcion">
                             <i class="fas fa-brain"></i>
-                            <h4>Bloqueos de nervios</h4>
+                            <h4 data-i18n="tratamiento-opcion-5">Bloqueos de nervios periféricos</h4>
+                            <p data-i18n="tratamiento-opcion-5-desc">Guiado por ecografía</p>
                         </div>
                     </div>
                 </div>
@@ -265,91 +292,91 @@
     <!-- Patologías Section -->
     <section class="patologias-section">
         <div class="container">
-            <h2 class="section-title">¿Qué patologías tratamos con mayor frecuencia?</h2>
-            <p class="section-subtitle">En Clínica TRR abordamos un amplio abanico de afecciones musculoesqueléticas. Estas son algunas de las más comunes:</p>
+            <h2 class="section-title" data-i18n="section-patologias">¿Qué patologías tratamos con mayor frecuencia?</h2>
+            <p class="section-subtitle" data-i18n="patologias-subtitle">En Clínica Maldonado&Herrero abordamos un amplio abanico de afecciones musculoesqueléticas. Estas son algunas de las más comunes:</p>
             
             <div class="patologias-grid">
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-bone"></i>
-                        <h3>Patología de hombro</h3>
+                        <h3 data-i18n="patologia-hombro-title">Patología de hombro</h3>
                     </div>
                     <ul>
-                        <li>Tendinopatía calcificante</li>
-                        <li>Artrosis glenohumeral</li>
-                        <li>Tendinopatía del manguito rotador</li>
-                        <li>Bursitis subacromiosubdeltoidea</li>
-                        <li>Patología acromioclavicular</li>
+                        <li data-i18n="patologia-hombro-1">Tendinopatía calcificante</li>
+                        <li data-i18n="patologia-hombro-2">Artrosis glenohumeral</li>
+                        <li data-i18n="patologia-hombro-3">Tendinopatía del manguito rotador</li>
+                        <li data-i18n="patologia-hombro-4">Bursitis subacromiosubdeltoidea</li>
+                        <li data-i18n="patologia-hombro-5">Patología acromioclavicular</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-fist-raised"></i>
-                        <h3>Patología de codo</h3>
+                        <h3 data-i18n="patologia-codo-title">Patología de codo</h3>
                     </div>
                     <ul>
-                        <li>Epicondilitis (codo de tenista)</li>
-                        <li>Epitrocleitis (codo de golfista)</li>
+                        <li data-i18n="patologia-codo-1">Epicondilitis (codo de tenista)</li>
+                        <li data-i18n="patologia-codo-2">Epitrocleitis (codo de golfista)</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-hands-helping"></i>
-                        <h3>Patología de muñeca y mano</h3>
+                        <h3 data-i18n="patologia-muneca-title">Patología de muñeca y mano</h3>
                     </div>
                     <ul>
-                        <li>Tenosinovitis de De Quervain</li>
-                        <li>Dedos en resorte</li>
+                        <li data-i18n="patologia-muneca-1">Tenosinovitis estenosante de Quervain</li>
+                        <li data-i18n="patologia-muneca-2">Dedos en resorte</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-walking"></i>
-                        <h3>Patología de cadera</h3>
+                        <h3 data-i18n="patologia-cadera-title">Patología de cadera</h3>
                     </div>
                     <ul>
-                        <li>Artrosis de cadera</li>
-                        <li>Lesiones del labrum</li>
-                        <li>Síndrome subglúteo</li>
-                        <li>Síndrome trocantéreo</li>
+                        <li data-i18n="patologia-cadera-1">Artrosis de cadera</li>
+                        <li data-i18n="patologia-cadera-2">Lesiones del labrum</li>
+                        <li data-i18n="patologia-cadera-3">Síndrome subglúteo</li>
+                        <li data-i18n="patologia-cadera-4">Síndrome trocantéreo</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-running"></i>
-                        <h3>Patología de rodilla</h3>
+                        <h3 data-i18n="patologia-rodilla-title">Patología de rodilla</h3>
                     </div>
                     <ul>
-                        <li>Artrosis de rodilla</li>
-                        <li>Condropatía rotuliana</li>
-                        <li>Tendinitis de la pata de ganso</li>
-                        <li>Síndrome de la cintilla iliotibial</li>
-                        <li>Quiste de Baker</li>
+                        <li data-i18n="patologia-rodilla-1">Artrosis de rodilla</li>
+                        <li data-i18n="patologia-rodilla-2">Condropatía rotuliana</li>
+                        <li data-i18n="patologia-rodilla-3">Tendinitis de la pata de ganso</li>
+                        <li data-i18n="patologia-rodilla-4">Síndrome de la cintilla iliotibial</li>
+                        <li data-i18n="patologia-rodilla-5">Quiste de Baker</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-shoe-prints"></i>
-                        <h3>Patología de tobillo y pie</h3>
+                        <h3 data-i18n="patologia-tobillo-title">Patología de tobillo y pie</h3>
                     </div>
                     <ul>
-                        <li>Artrosis de tobillo</li>
-                        <li>Fascitis plantar</li>
-                        <li>Neuroma de Morton</li>
+                        <li data-i18n="patologia-tobillo-1">Artrosis de tobillo</li>
+                        <li data-i18n="patologia-tobillo-2">Fascitis plantar</li>
+                        <li data-i18n="patologia-tobillo-3">Neuroma de Morton</li>
                     </ul>
                 </div>
                 
                 <div class="patologia-categoria">
                     <div class="categoria-header">
                         <i class="fas fa-medal"></i>
-                        <h3>Patología deportiva</h3>
+                        <h3 data-i18n="patologia-deportiva-title">Patología deportiva</h3>
                     </div>
-                    <p>Atención especializada en lesiones por sobreuso, traumatismos, tendinopatías o sobrecargas frecuentes en deportistas.</p>
+                    <p data-i18n="patologia-deportiva-desc">Atención especializada en lesiones por sobreuso, traumatismos, tendinopatías o sobrecargas frecuentes en deportistas.</p>
                 </div>
             </div>
         </div>
@@ -358,27 +385,10 @@
     <!-- Rehabilitación Section -->
     <section id="rehabilitacion" class="rehabilitacion-section">
         <div class="container">
-            <h2 class="section-title">REHABILITACIÓN</h2>
+            <h2 class="section-title" data-i18n="section-rehabilitacion">REHABILITACIÓN</h2>
             <div class="rehabilitacion-content">
                 <div class="rehabilitacion-text">
-                    <p>Nuestro programa de rehabilitación está diseñado para cada paciente y patología específica, con el objetivo de recuperar la funcionalidad y mejorar la calidad de vida.</p>
-                    <div class="rehabilitacion-features">
-                        <div class="feature">
-                            <i class="fas fa-clipboard-list"></i>
-                            <h4>Ejercicios por patología</h4>
-                            <p>Programas personalizados de ejercicios específicos para cada tipo de lesión o patología.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>Seguimiento continuo</h4>
-                            <p>Evaluación regular del progreso y ajuste del tratamiento según la evolución.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-home"></i>
-                            <h4>Ejercicios domiciliarios</h4>
-                            <p>Instrucciones claras para continuar la rehabilitación en casa.</p>
-                        </div>
-                    </div>
+                    <p data-i18n="rehabilitacion-desc">Se diseñará un programa de ejercicios y recomendaciones específicas para cada patología, basado en un diagnóstico preciso y en el adecuado control del dolor del paciente con el objetivo de recuperar la funcionalidad y mejorar la calidad de vida.</p>
                 </div>
             </div>
         </div>
@@ -387,30 +397,79 @@
     <!-- Team Section -->
     <section id="equipo" class="team-section">
         <div class="container">
-            <h2 class="section-title">Nuestro Equipo</h2>
+            <h2 class="section-title" data-i18n="section-equipo">Nuestro Equipo</h2>
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="assets/doctor-alfonso.jpg" alt="Dr. Alfonso Maldonado">
+                        <img src="assets/doctor-alfonso.png" alt="Dr. Alfonso Maldonado">
                     </div>
-                    <h3>Dr. Alfonso Maldonado</h3>
-                    <p>Especialista en Traumatología y Radiología</p>
+                    <h3>Dr. Alfonso Enrique Maldonado Morillo</h3>
+                    <ul class="member-details">
+                        <li data-i18n="doctor-alfonso-1">Licenciado en Medicina por Universidad Autónoma de Madrid.</li>
+                        <li data-i18n="doctor-alfonso-2">Especialista vía MIR en Traumatología-Cirugía Ortopédica (HU La Princesa, Madrid).</li>
+                        <li data-i18n="doctor-alfonso-3">Especialista vía MIR en Radiodiagnóstico (HU Doctor Peset, Valencia) con rotaciones específicas en patología musculoesquelética en centros de referencia nacional en Madrid, Bilbao y Valencia.</li>
+                        <li data-i18n="doctor-alfonso-4">Subespecializado en patología musculoesquelética (ecografía, RM, TC, artroRM y tratamientos percutáneos ecoguiados).</li>
+                    </ul>
                     <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/alfonso-maldonado-morillo-a96713181/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/dr.maldonadomsk/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="assets/doctora-luz.jpg" alt="Dra. Luz">
+                        <img src="assets/doctora-luz.png" alt="Dra. Luz">
                     </div>
-                    <h3>Dra. Luz Herrero</h3>
-                    <p>Especialista en Rehabilitación</p>
+                    <h3>Dra. Luz M. Herrero Manley</h3>
+                    <ul class="member-details">
+                        <li data-i18n="doctora-luz-1">Grado en Medicina por Universidad de Las Palmas de Gran Canaria.</li>
+                        <li data-i18n="doctora-luz-2">Especialista vía MIR en Medicina Física y Rehabilitación (HU La Fe, Valencia).</li>
+                        <li data-i18n="doctora-luz-3">Doctorada con Sobresaliente Cum Laude (Universidad de Valencia): "Artrosis precoz de rodilla. Revisión clínica de los criterios diagnósticos".</li>
+                        <li data-i18n="doctora-luz-4">Máster y cursos específicos de ecografía musculoesquelética, intervencionismo ecoguiado y ondas de choque.</li>
+                    </ul>
                     <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/luz-herrero-manley-b645b421b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Gallery Section -->
+    <section class="clinic-gallery-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="gallery-title">Nuestra Clínica</h2>
+            <p class="gallery-description" data-i18n="gallery-description">Maldonado&Herrero Clínica del dolor articular y osteomuscular está situada en pleno centro de Madrid (Calle O'Donnell 25)</p>
+            <div class="clinic-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide active">
+                            <img src="assets/clinica1.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/clinica2.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/clinica3.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/clinica4.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/clinica5.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/clinica6.jpeg" alt="Clínica Maldonado&Herrero">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                    <span class="carousel-dot" data-slide="3"></span>
+                    <span class="carousel-dot" data-slide="4"></span>
+                    <span class="carousel-dot" data-slide="5"></span>
                 </div>
             </div>
         </div>
@@ -421,36 +480,35 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>NOSOTROS</h4>
-                    <p>Clínica TRR</p>
+                    <h4 data-i18n="footer-nosotros">NOSOTROS</h4>
+                    <p>Clínica Maldonado&Herrero</p>
                     <p>Especialistas en Traumatología, Radiología y Rehabilitación.</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>DÓNDE ENCONTRARNOS</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Calle O’Donnell 25, Bajo-D, 28009 (Madrid)</p>
+                    <h4 data-i18n="footer-donde">DÓNDE ENCONTRARNOS</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle O'Donnell 25, Bajo-D, 28009 (Madrid)</p>
                     <p><i class="fas fa-phone"></i> <a href="tel:+34911465914">+34 91 146 59 14</a></p>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:dr.alfonsomaldonado@gmail.com">dr.alfonsomaldonado@gmail.com</a></p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>HORARIO</h4>
-                    <p>Lunes - Viernes: 9:00 - 19:00</p>
+                    <h4 data-i18n="footer-horario">HORARIO</h4>
+                    <p>Lunes - Viernes: 16:00 - 20:00</p>
                     <p>Sábados: 9:00 - 14:00</p>
                     <p>Domingos: Cerrado</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>CITA PREVIA</h4>
-                    <p>Antes de acudir al centro es necesario pedir cita previa por teléfono o email.</p>
-                    <a href="#contacto" class="footer-button">Pedir Cita</a>
+                    <h4 data-i18n="footer-cita">CITA PREVIA</h4>
+                    <p data-i18n="footer-cita-text">Antes de acudir al centro es necesario pedir cita previa por teléfono o email.</p>
+                    <a href="#contacto" class="footer-button" data-i18n="footer-pedir-cita">Pedir Cita</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
                 <div class="footer-links">

@@ -1,4 +1,4 @@
-# Guía de Personalización - Clínica TRR
+# Guía de Personalización - Clínica Maldonado&Herrero
 
 ## Información que Necesitas Proporcionar
 
