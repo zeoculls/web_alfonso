@@ -1,3 +1,21 @@
+// EmailJS Configuration
+// IMPORTANTE: Reemplaza estos valores con tus credenciales de EmailJS
+// Puedes obtenerlas en https://www.emailjs.com/
+const EMAILJS_CONFIG = {
+    SERVICE_ID: 'service_4bmsntl',      // Reemplaza con tu Service ID
+    TEMPLATE_ID_CLINICA: 'template_ij6i2up',   // Template para email a la clínica
+    TEMPLATE_ID_PACIENTE: 'template_wh36zrg',   // Template para email de confirmación al paciente
+    PUBLIC_KEY: 'AzQCfc2LEFIOZ37ja',       // Reemplaza con tu Public Key
+    TO_EMAIL: 'javi.portabales@gmail.com'  // Email de destino (clínica)
+//    TO_EMAIL: 'dr.alfonsomaldonado@gmail.com'  // Email de destino
+
+};
+
+// Initialize EmailJS
+(function() {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+})();
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
@@ -192,11 +210,51 @@ function initFormValidation() {
                 return;
             }
             
-            // Simulate form submission
+            // Get service name from select
+            const serviceSelect = document.getElementById('service');
+            const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
+            
+            // Show loading notification
             showNotification('Enviando mensaje...', 'info');
             
-            // Simulate API call
-            setTimeout(() => {
+            // Prepare email template parameters for clinic
+            const templateParamsClinica = {
+                from_name: name,
+                from_email: email,
+                phone: phone || 'No proporcionado',
+                service: serviceText || 'No especificado',
+                message: message || 'Sin mensaje adicional',
+                to_email: EMAILJS_CONFIG.TO_EMAIL, // Email de destino (usar {{to_email}} en el template)
+                reply_to: email // Para que puedas responder directamente al usuario
+            };
+            
+            // Prepare email template parameters for patient (confirmation)
+            const templateParamsPaciente = {
+                to_name: name,
+                to_email: email,
+                service: serviceText || 'No especificado',
+                clinic_email: EMAILJS_CONFIG.TO_EMAIL
+            };
+            
+            // Send both emails using EmailJS
+            Promise.all([
+                // Email to clinic
+                emailjs.send(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATE_ID_CLINICA,
+                    templateParamsClinica
+                ),
+                // Email to patient (confirmation) - only if template is configured
+                EMAILJS_CONFIG.TEMPLATE_ID_PACIENTE !== 'YOUR_PATIENT_TEMPLATE_ID' 
+                    ? emailjs.send(
+                        EMAILJS_CONFIG.SERVICE_ID,
+                        EMAILJS_CONFIG.TEMPLATE_ID_PACIENTE,
+                        templateParamsPaciente
+                    )
+                    : Promise.resolve({ status: 200, text: 'Patient email template not configured' })
+            ])
+            .then(function(responses) {
+                console.log('Emails enviados exitosamente!', responses);
                 showNotification('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.', 'success');
                 contactForm.reset();
                 
@@ -206,7 +264,20 @@ function initFormValidation() {
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }, 2000);
-            }, 1500);
+            }, function(error) {
+                console.error('Error al enviar el email:', error);
+                let errorMessage = 'Error al enviar el mensaje. ';
+                
+                if (error.status === 405 || error.text === 'Method Not Allowed') {
+                    errorMessage += 'Por favor, verifica que los Template IDs estén configurados correctamente en EmailJS.';
+                } else if (error.status === 400) {
+                    errorMessage += 'Verifica que todos los campos del formulario estén completos.';
+                } else {
+                    errorMessage += 'Por favor, inténtalo de nuevo o contacta directamente por teléfono.';
+                }
+                
+                showNotification(errorMessage, 'error');
+            });
         });
     }
 }
@@ -440,16 +511,21 @@ const translations = {
         'hero-title-3': 'Equipo Especializado',
         'hero-subtitle-3': 'Expertos en traumatología, rehabilitación e imagen',
         'hero-cta-3': 'Conoce Nuestro Equipo',
+        'what-we-do-title': '¿Qué realizamos?',
+        'what-we-do-1': 'Diagnóstico de alta precisión.',
+        'what-we-do-2': 'Ecografía: ecógrafo de alta gama con médico especialista en radiología.',
+        'what-we-do-3': 'Tratamientos dirigidos no quirúrgicos: infiltraciones ecoguiadas, técnicas percutáneas mínimamente invasivas, ondas de choque, bloqueos de Nervio Periférico.',
+        'what-we-do-4': 'Rehabilitación: médico especialista en rehabilitación.',
         // Welcome
-        'welcome-title': 'BIENVENIDO A CLÍNICA Maldonado&Herrero. Clínica del Dolor Articular y Osteomuscular',
+        'welcome-title': 'Bienvenido a Clínica Maldonado&Herrero. Clínica del Dolor Articular y Osteomuscular',
         'welcome-subtitle': 'Especialistas en Traumatología, Radiología y Rehabilitación',
         // Services
         'service-diagnostico': 'Diagnóstico',
         'service-diagnostico-desc': 'Anamnesis + Exploración Física + Pruebas de Imagen en una misma consulta para un diagnóstico preciso y rápido.',
-        'service-ecografia': 'Ecografía Musculoesquelética',
-        'service-ecografia-desc': 'Ecógrafo de alta gama con informe detallado y explicado por radiólogo especializado en la misma consulta.',
+        'service-ecografia': 'Ecografía Musculoesquelética y de Nervio Periférico',
+        'service-ecografia-desc': 'Ecografía realizada por médico especialista en radiología y subespecializado en este campo, con realización de informe radiológico completo en la misma consulta.',
         'service-tratamiento': 'Tratamiento No Quirúrgico',
-        'service-tratamiento-desc': 'Ejercicios dirigidos, ondas de choque, infiltraciones dirigidas por ecografía (ecoguiadas) y técnicas percutáneas mínimamente invasivas.',
+        'service-tratamiento-desc': 'Ejercicios terapéuticos dirigidos, infiltraciones guiadas por ecografía, técnicas percutáneas mínimamente invasivas, ondas de choque focales y bloqueos de nervio periférico.',
         'service-rehabilitacion': 'Rehabilitación Especializada',
         'service-rehabilitacion-desc': 'Ejercicios dirigidos por patología para recuperar la funcionalidad y mejorar la calidad de vida.',
         'service-seguimiento': 'Seguimiento',
@@ -468,29 +544,36 @@ const translations = {
         // Sections
         'section-diagnostico': 'DIAGNÓSTICO',
         'diagnostico-pilar-1-title': 'Consulta con médico especialista',
-        'diagnostico-pilar-1-desc': 'Consulta con médico especialista en Traumatología y/o Rehabilitación. Si tiene pruebas de imagen previas serán valoradas por médico radiólogo especialista en musculoesquelético para un diagnóstico más preciso.',
-        'diagnostico-pilar-2-title': 'Ecografía de alta gama',
-        'diagnostico-pilar-2-desc': 'Ecografía de alta gama realizada por médico especialista en radiología con realización de informe radiológico completo.',
-        'diagnostico-feature-1-title': 'Solicitamos solo las pruebas necesarias',
-        'diagnostico-feature-1-desc': 'Te indicaremos únicamente las pruebas de imagen que realmente se requieran, y si ya cuentas con estudios previos realizados en otro centro, nuestros especialistas los revisarán e interpretarán durante tu visita.',
-        'diagnostico-feature-2-title': 'Ecografía musculoesquelética, en el momento',
-        'diagnostico-feature-2-desc': 'Contamos con ecógrafo de referencia y realizamos ecografías musculoesqueléticas con informe detallado, elaborado por un radiólogo especializado en este campo en la misma consulta.',
+        'diagnostico-pilar-1-desc': 'Consulta con médico especialista en Traumatología y/o Rehabilitación. Si ya cuenta con estudios previos realizados en otro centro, nuestros especialistas los revisarán e interpretarán durante su visita.',
+        'diagnostico-pilar-2-title': 'Ecógrafo de alta gama',
+        'diagnostico-pilar-2-desc': 'Ecógrafo de alta gama realizado por médico especialista en radiología con realización de informe radiológico completo.',
+        'ecografias-frecuentes-title': 'Ecografías más frecuentes realizadas:',
+        'ecografias-1': 'Ecografía articular (hombro, codo, muñeca, dedos, cadera, rodilla, tobillo, pie).',
+        'ecografias-2': 'Ecografía muscular.',
+        'ecografias-3': 'Ecografía de nervio periférico.',
+        'ecografias-4': 'Ecografía de partes blandas por un bulto.',
         'diagnostico-slogan': 'Diagnóstico integral y sin esperas. Consulta tu caso en Clínica Maldonado&Herrero.',
         'section-tratamiento': 'TRATAMIENTO',
-        'tratamiento-intro-1': 'Tras una valoración integral y un diagnóstico preciso, recomendaremos el tratamiento más adecuado para cada caso, priorizando siempre las opciones más conservadoras antes de considerar la cirugía.',
-        'tratamiento-intro-2': 'Nuestros tratamientos se basan en evidencia científica y se adaptan a las necesidades de cada paciente.',
+        'tratamiento-intro-1': 'Tras una valoración integral y un diagnóstico preciso, recomendaremos y explicaremos el tratamiento más adecuado para cada caso, priorizando siempre las opciones más conservadoras.',
+        'tratamiento-intro-2': '¿Qué tratamientos realizamos en la clínica?',
         'tratamiento-opciones-title': 'Opciones de tratamiento no quirúrgico:',
-        'tratamiento-opcion-1': 'Fisioterapia con ejercicios dirigidos',
+        'tratamiento-opcion-1': 'Ejercicios terapéuticos dirigidos',
         'tratamiento-opcion-2': 'Infiltraciones ecoguiadas',
         'tratamiento-opcion-2-desc': '(seguras y precisas gracias al control por imagen)',
         'tratamiento-opcion-2-item-1': 'Cortico-anestésicas',
         'tratamiento-opcion-2-item-2': 'Ácido hialurónico',
         'tratamiento-opcion-2-item-3': 'Plasma Rico en Plaquetas (PRP)',
+        'tratamiento-opcion-2-item-4': 'Toxina botulínica',
         'tratamiento-opcion-3': 'Técnicas percutáneas ecoguiadas',
         'tratamiento-opcion-3-desc': 'Mínimamente invasivas',
         'tratamiento-opcion-4': 'Ondas de choque focales',
         'tratamiento-opcion-5': 'Bloqueos de nervios periféricos',
         'tratamiento-opcion-5-desc': 'Guiado por ecografía',
+        'tratamiento-opcion-6': 'Otros tratamientos',
+        'tratamiento-opcion-6-item-1': 'Dolor en articulación temporomandibular.',
+        'tratamiento-opcion-6-item-2': 'Gangliones.',
+        'tratamiento-opcion-6-item-3': 'Drenaje de lesión Morel-Lavallée.',
+        'tratamiento-opcion-6-item-4': 'Patología de nervio periférico.',
         'section-patologias': '¿Qué patologías tratamos con mayor frecuencia?',
         'patologias-subtitle': 'En Clínica Maldonado&Herrero abordamos un amplio abanico de afecciones musculoesqueléticas. Estas son algunas de las más comunes:',
         'patologia-hombro-title': 'Patología de hombro',
@@ -528,7 +611,7 @@ const translations = {
         'doctor-alfonso-1': 'Licenciado en Medicina por Universidad Autónoma de Madrid.',
         'doctor-alfonso-2': 'Especialista vía MIR en Traumatología-Cirugía Ortopédica (HU La Princesa, Madrid).',
         'doctor-alfonso-3': 'Especialista vía MIR en Radiodiagnóstico (HU Doctor Peset, Valencia) con rotaciones específicas en patología musculoesquelética en centros de referencia nacional en Madrid, Bilbao y Valencia.',
-        'doctor-alfonso-4': 'Subespecializado en patología musculoesquelética (ecografía, RM, TC, artroRM y tratamientos percutáneos ecoguiados).',
+        'doctor-alfonso-4': 'Subespecializado en patología musculoesquelética (ecografía, RM, TC, ArtroRM/TC y tratamientos percutáneos ecoguiados).',
         'doctora-luz-1': 'Grado en Medicina por Universidad de Las Palmas de Gran Canaria.',
         'doctora-luz-2': 'Especialista vía MIR en Medicina Física y Rehabilitación (HU La Fe, Valencia).',
         'doctora-luz-3': 'Doctorada con Sobresaliente Cum Laude (Universidad de Valencia): "Artrosis precoz de rodilla. Revisión clínica de los criterios diagnósticos".',
@@ -542,7 +625,15 @@ const translations = {
         'footer-pedir-cita': 'Pedir Cita',
         // Gallery
         'gallery-title': 'Nuestra Clínica',
-        'gallery-description': 'Maldonado&Herrero Clínica del dolor articular y osteomuscular está situada en pleno centro de Madrid (Calle O\'Donnell 25)'
+        'gallery-description': 'Maldonado&Herrero Clínica del dolor articular y osteomuscular está situada en pleno centro de Madrid (Calle O\'Donnell 25)',
+        // Contact Form Services
+        'contact-service-1': 'Consulta médico especialista (con opción a ecografía)',
+        'contact-service-2': 'Ecografía',
+        'contact-service-3': 'Tratamiento infiltración ecoguiada o técnica percutánea ecoguiada',
+        'contact-service-4': 'Bloqueo de nervio periférico',
+        'contact-service-5': 'Tratamiento con ondas de choque focales',
+        'contact-service-6': 'Otros',
+        'contact-description': 'Explíquenos el motivo y si tiene pruebas de imagen ya realizadas y cuáles (Radiografía, Ecografía, TAC, Resonancia...)'
     },
     en: {
         // Navigation
@@ -563,16 +654,21 @@ const translations = {
         'hero-title-3': 'Specialized Team',
         'hero-subtitle-3': 'Experts in traumatology, rehabilitation and imaging',
         'hero-cta-3': 'Meet Our Team',
+        'what-we-do-title': 'What do we do?',
+        'what-we-do-1': 'High-precision diagnosis.',
+        'what-we-do-2': 'Ultrasound: high-end ultrasound equipment with specialist doctor in radiology.',
+        'what-we-do-3': 'Non-surgical targeted treatments: ultrasound-guided infiltrations, minimally invasive percutaneous techniques, shock waves, peripheral nerve blocks.',
+        'what-we-do-4': 'Rehabilitation: specialist doctor in rehabilitation.',
         // Welcome
-        'welcome-title': 'WELCOME TO Maldonado&Herrero CLINIC. Joint and Musculoskeletal Pain Clinic',
+        'welcome-title': 'Welcome to Maldonado&Herrero Clinic. Joint and Musculoskeletal Pain Clinic',
         'welcome-subtitle': 'Specialists in Traumatology, Radiology and Rehabilitation',
         // Services
         'service-diagnostico': 'Diagnosis',
         'service-diagnostico-desc': 'Medical History + Physical Examination + Imaging Tests in the same consultation for a precise and rapid diagnosis.',
-        'service-ecografia': 'Musculoskeletal Ultrasound',
-        'service-ecografia-desc': 'High-end ultrasound equipment with detailed report explained by a specialized radiologist in the same consultation.',
+        'service-ecografia': 'Musculoskeletal and Peripheral Nerve Ultrasound',
+        'service-ecografia-desc': 'Ultrasound performed by a specialist doctor in radiology, subspecialized in this field, with complete radiological report in the same consultation.',
         'service-tratamiento': 'Non-Surgical Treatment',
-        'service-tratamiento-desc': 'Directed exercises, shock waves, ultrasound-guided infiltrations (ecoguiadas) and minimally invasive percutaneous techniques.',
+        'service-tratamiento-desc': 'Directed therapeutic exercises, ultrasound-guided infiltrations, minimally invasive percutaneous techniques, focal shock waves and peripheral nerve blocks.',
         'service-rehabilitacion': 'Specialized Rehabilitation',
         'service-rehabilitacion-desc': 'Pathology-directed exercises to recover functionality and improve quality of life.',
         'service-seguimiento': 'Follow-up',
@@ -591,29 +687,36 @@ const translations = {
         // Sections
         'section-diagnostico': 'DIAGNOSIS',
         'diagnostico-pilar-1-title': 'Consultation with specialist doctor',
-        'diagnostico-pilar-1-desc': 'Consultation with a specialist doctor in Traumatology and/or Rehabilitation. If you have previous imaging tests, they will be evaluated by a radiologist specialist in musculoskeletal medicine for a more precise diagnosis.',
-        'diagnostico-pilar-2-title': 'High-end ultrasound',
-        'diagnostico-pilar-2-desc': 'High-end ultrasound performed by a specialist doctor in radiology with complete radiological report.',
-        'diagnostico-feature-1-title': 'We only request necessary tests',
-        'diagnostico-feature-1-desc': 'We will indicate only the imaging tests that are really required, and if you already have previous studies performed at another center, our specialists will review and interpret them during your visit.',
-        'diagnostico-feature-2-title': 'Musculoskeletal ultrasound, on the spot',
-        'diagnostico-feature-2-desc': 'We have a reference ultrasound machine and perform musculoskeletal ultrasounds with detailed report, prepared by a radiologist specialized in this field in the same consultation.',
+        'diagnostico-pilar-1-desc': 'Consultation with a specialist doctor in Traumatology and/or Rehabilitation. If you already have previous studies performed at another center, our specialists will review and interpret them during your visit.',
+        'diagnostico-pilar-2-title': 'High-end ultrasound scanner',
+        'diagnostico-pilar-2-desc': 'Ultrasound performed by a specialist doctor in radiology, subspecialized in this field, with complete radiological report in the same consultation.',
+        'ecografias-frecuentes-title': 'Most frequently performed ultrasounds:',
+        'ecografias-1': 'Joint ultrasound (shoulder, elbow, wrist, fingers, hip, knee, ankle, foot).',
+        'ecografias-2': 'Muscle ultrasound.',
+        'ecografias-3': 'Peripheral nerve ultrasound.',
+        'ecografias-4': 'Soft tissue ultrasound for a lump.',
         'diagnostico-slogan': 'Comprehensive diagnosis without waiting. Consult your case at Maldonado&Herrero Clinic.',
         'section-tratamiento': 'TREATMENT',
-        'tratamiento-intro-1': 'After a comprehensive assessment and accurate diagnosis, we will recommend the most appropriate treatment for each case, always prioritizing the most conservative options before considering surgery.',
-        'tratamiento-intro-2': 'Our treatments are based on scientific evidence and are adapted to the needs of each patient.',
+        'tratamiento-intro-1': 'After a comprehensive assessment and accurate diagnosis, we will recommend and explain the most appropriate treatment for each case, always prioritizing the most conservative options.',
+        'tratamiento-intro-2': 'What treatments do we perform at the clinic?',
         'tratamiento-opciones-title': 'Non-surgical treatment options:',
-        'tratamiento-opcion-1': 'Physiotherapy with directed exercises',
+        'tratamiento-opcion-1': 'Directed therapeutic exercises',
         'tratamiento-opcion-2': 'Ultrasound-guided infiltrations',
         'tratamiento-opcion-2-desc': '(safe and precise thanks to image control)',
         'tratamiento-opcion-2-item-1': 'Corticosteroid-anesthetic',
         'tratamiento-opcion-2-item-2': 'Hyaluronic acid',
         'tratamiento-opcion-2-item-3': 'Platelet Rich Plasma (PRP)',
+        'tratamiento-opcion-2-item-4': 'Botulinum toxin',
         'tratamiento-opcion-3': 'Ultrasound-guided percutaneous techniques',
         'tratamiento-opcion-3-desc': 'Minimally invasive',
         'tratamiento-opcion-4': 'Focal shock waves',
         'tratamiento-opcion-5': 'Peripheral nerve blocks',
         'tratamiento-opcion-5-desc': 'Ultrasound-guided',
+        'tratamiento-opcion-6': 'Other treatments',
+        'tratamiento-opcion-6-item-1': 'Temporomandibular joint pain.',
+        'tratamiento-opcion-6-item-2': 'Ganglia.',
+        'tratamiento-opcion-6-item-3': 'Morel-Lavallée lesion drainage.',
+        'tratamiento-opcion-6-item-4': 'Peripheral nerve pathology.',
         'section-patologias': 'What pathologies do we treat most frequently?',
         'patologias-subtitle': 'At Maldonado&Herrero Clinic we address a wide range of musculoskeletal conditions. Here are some of the most common:',
         'patologia-hombro-title': 'Shoulder pathology',
@@ -651,7 +754,7 @@ const translations = {
         'doctor-alfonso-1': 'Medical Degree from Autonomous University of Madrid.',
         'doctor-alfonso-2': 'Specialist via MIR in Traumatology-Orthopedic Surgery (HU La Princesa, Madrid).',
         'doctor-alfonso-3': 'Specialist via MIR in Radiodiagnosis (HU Doctor Peset, Valencia) with specific rotations in musculoskeletal pathology at national reference centers in Madrid, Bilbao and Valencia.',
-        'doctor-alfonso-4': 'Subspecialized in musculoskeletal pathology (ultrasound, MRI, CT, arthroMRI and ultrasound-guided percutaneous treatments).',
+        'doctor-alfonso-4': 'Subspecialized in musculoskeletal pathology (ultrasound, MRI, CT, ArthroMRI/CT and ultrasound-guided percutaneous treatments).',
         'doctora-luz-1': 'Medical Degree from University of Las Palmas de Gran Canaria.',
         'doctora-luz-2': 'Specialist via MIR in Physical Medicine and Rehabilitation (HU La Fe, Valencia).',
         'doctora-luz-3': 'PhD with Outstanding Cum Laude (University of Valencia): "Early knee osteoarthritis. Clinical review of diagnostic criteria".',
@@ -665,7 +768,15 @@ const translations = {
         'footer-pedir-cita': 'Request Appointment',
         // Gallery
         'gallery-title': 'Our Clinic',
-        'gallery-description': 'Maldonado&Herrero Joint and Musculoskeletal Pain Clinic is located in the heart of Madrid (O\'Donnell Street 25)'
+        'gallery-description': 'Maldonado&Herrero Joint and Musculoskeletal Pain Clinic is located in the heart of Madrid (O\'Donnell Street 25)',
+        // Contact Form Services
+        'contact-service-1': 'Specialist doctor consultation (with ultrasound option)',
+        'contact-service-2': 'Ultrasound',
+        'contact-service-3': 'Ultrasound-guided infiltration treatment or ultrasound-guided percutaneous technique',
+        'contact-service-4': 'Peripheral nerve block',
+        'contact-service-5': 'Focal shock wave treatment',
+        'contact-service-6': 'Other',
+        'contact-description': 'Please explain the reason and if you have already performed imaging tests and which ones (X-ray, Ultrasound, CT, MRI...)'
     }
 };
 

@@ -230,15 +230,13 @@ h1, h2, h3, h4, h5, h6 {
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/hero-2.jpg');
 }
 
-.slide:nth-child(3) {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/hero-3.jpg');
-}
-
 .slide-content {
     text-align: center;
     color: white;
     max-width: 600px;
     padding: 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .slide-content h2 {
@@ -307,6 +305,9 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
 }
 
 .cta-button:hover {
@@ -323,6 +324,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     padding: 0 30px;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .prev-slide,
@@ -334,6 +337,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
+    pointer-events: auto;
 }
 
 .prev-slide:hover,
@@ -345,6 +349,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     bottom: 30px;
     left: 50%;
+    z-index: 5;
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
@@ -384,6 +389,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 40px 30px;
     border-radius: 15px;
@@ -438,6 +445,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 25px;
     font-weight: 600;
     transition: all 0.3s ease;
+    margin-top: auto;
 }
 
 .service-button:hover {
@@ -606,6 +614,41 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.6;
     text-align: left;
     margin-top: 10px;
+}
+
+.ecografias-frecuentes {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.ecografias-frecuentes h5 {
+    font-size: 1.1rem;
+    color: #0c71c3;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.ecografias-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ecografias-list li {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.ecografias-list li:before {
+    content: "•";
+    color: #0c71c3;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 .diagnostico-features {
@@ -1035,12 +1078,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-content {
     background-color: white;
-    margin: 5% auto;
-    padding: 40px;
+    margin: 2% auto;
+    padding: 30px;
     border-radius: 15px;
     width: 90%;
     max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 
 .close {
@@ -1057,11 +1104,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-form {
-    margin-top: 20px;
+    margin-top: 15px;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    margin-top: 0;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-group label {
@@ -1069,16 +1122,29 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 5px;
     font-weight: 600;
     color: #333;
+    font-size: 0.95rem;
+}
+
+.form-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #0c71c3;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: 2px solid #e9ecef;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: border-color 0.3s ease;
 }
 
@@ -1092,9 +1158,11 @@ h1, h2, h3, h4, h5, h6 {
 .submit-button {
     background: #0c71c3;
     color: white;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border: none;
     border-radius: 25px;
+    font-size: 0.95rem;
+    margin-top: 10px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
