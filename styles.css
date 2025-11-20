@@ -1193,29 +1193,59 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-slider {
-        height: 400px;
+        height: auto;
+        min-height: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .slide {
+        min-height: 500px;
+        padding: 20px 0;
+    }
+    
+    .slide-content {
+        max-width: 100%;
+        padding: 20px;
     }
     
     .slide-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
     }
     
     .slide-content p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
     }
     
     .what-we-do {
-        padding: 15px;
-        margin: 1.5rem 0;
+        padding: 12px;
+        margin: 1rem 0;
+        max-width: 100%;
     }
     
     .what-we-do h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .check-list {
+        margin: 0;
+        padding: 0;
     }
     
     .check-list li {
-        font-size: 0.9rem;
-        padding-left: 25px;
+        font-size: 0.85rem;
+        padding-left: 20px;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+    
+    .slide-content .cta-button {
+        margin-top: 1rem;
+        padding: 12px 25px;
+        font-size: 0.85rem;
     }
     
     .services-grid {
@@ -1310,13 +1340,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+    .hero-slider {
+        min-height: 450px;
+        max-height: 85vh;
+    }
+    
+    .slide {
+        min-height: 450px;
+        padding: 15px 0;
+    }
+    
+    .slide-content {
+        padding: 15px;
+    }
+    
     .slide-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .slide-content p {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .what-we-do {
+        padding: 10px;
+        margin: 0.8rem 0;
+    }
+    
+    .what-we-do h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .check-list li {
+        font-size: 0.8rem;
+        padding-left: 18px;
+        margin-bottom: 0.4rem;
     }
     
     .cta-button {
-        padding: 12px 25px;
-        font-size: 0.9rem;
+        padding: 10px 20px;
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
     }
     
     .service-card {
