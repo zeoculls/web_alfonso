@@ -479,7 +479,7 @@
                 <div class="footer-section">
                     <h4 data-i18n="footer-nosotros">NOSOTROS</h4>
                     <p>Clínica Maldonado&Herrero</p>
-                    <p>Especialistas en Traumatología, Radiología y Rehabilitación.</p>
+                    <p data-i18n="footer-especialistas">Especialistas en Traumatología, Radiología y Rehabilitación.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -491,9 +491,9 @@
                 
                 <div class="footer-section">
                     <h4 data-i18n="footer-horario">HORARIO</h4>
-                    <p>Lunes - Viernes: 16:00 - 20:00</p>
-                    <p>Sábados: 9:00 - 14:00</p>
-                    <p>Domingos: Cerrado</p>
+                    <p data-i18n="footer-horario-text">Lunes - Viernes: 16:00 - 20:00</p>
+                    <p data-i18n="footer-horario-sabado">Sábados: 9:00 - 14:00</p>
+                    <p data-i18n="footer-horario-domingo">Domingos: Cerrado</p>
                 </div>
                 
                 <div class="footer-section">
@@ -509,9 +509,9 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
                 <div class="footer-links">
-                    <a href="#">Política de Privacidad</a> | 
-                    <a href="#">Política de Cookies</a> | 
-                    <a href="#">Aviso Legal</a>
+                    <a href="#" data-i18n="footer-privacy">Política de Privacidad</a> | 
+                    <a href="#" data-i18n="footer-cookies">Política de Cookies</a> | 
+                    <a href="#" data-i18n="footer-legal">Aviso Legal</a>
                 </div>
             </div>
         </div>
@@ -521,24 +521,24 @@
     <div id="contact-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Contacto</h2>
+            <h2 data-i18n="contact-modal-title">Contacto</h2>
             <form class="contact-form">
                 <div class="form-group">
-                    <label for="name">Nombre completo</label>
+                    <label for="name" data-i18n="contact-label-name">Nombre completo</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" data-i18n="contact-label-email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Teléfono</label>
+                    <label for="phone" data-i18n="contact-label-phone">Teléfono</label>
                     <input type="tel" id="phone" name="phone">
                 </div>
                                     <div class="form-group">
-                        <label for="service">Servicio de interés</label>
+                        <label for="service" data-i18n="contact-label-service">Servicio de interés</label>
                         <select id="service" name="service">
-                            <option value="">Selecciona un servicio</option>
+                            <option value="" data-i18n="contact-select-service">Selecciona un servicio</option>
                             <option value="consulta-ecografia" data-i18n="contact-service-1">Consulta médico especialista (con opción a ecografía)</option>
                             <option value="ecografia" data-i18n="contact-service-2">Ecografía</option>
                             <option value="infiltracion-percutanea" data-i18n="contact-service-3">Tratamiento infiltración ecoguiada o técnica percutánea ecoguiada</option>
@@ -551,10 +551,10 @@
                         <p class="form-description" data-i18n="contact-description">Explíquenos el motivo y si tiene pruebas de imagen ya realizadas y cuáles (Radiografía, Ecografía, TAC, Resonancia...)</p>
                     </div>
                 <div class="form-group">
-                    <label for="message">Mensaje</label>
+                    <label for="message" data-i18n="contact-label-message">Mensaje</label>
                     <textarea id="message" name="message" rows="3"></textarea>
                 </div>
-                <button type="submit" class="submit-button">Enviar Mensaje</button>
+                <button type="submit" class="submit-button" data-i18n="contact-submit-button">Enviar Mensaje</button>
             </form>
         </div>
     </div>

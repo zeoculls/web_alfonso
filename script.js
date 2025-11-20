@@ -191,6 +191,9 @@ function initFormValidation() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Get current language
+            let currentLang = localStorage.getItem('language') || 'es';
+            
             // Get form data
             const formData = new FormData(this);
             const name = formData.get('name');
@@ -201,12 +204,12 @@ function initFormValidation() {
             
             // Basic validation
             if (!name || !email) {
-                showNotification('Por favor, completa los campos obligatorios.', 'error');
+                showNotification(translations[currentLang]['notification-required-fields'], 'error');
                 return;
             }
             
             if (!isValidEmail(email)) {
-                showNotification('Por favor, introduce un email válido.', 'error');
+                showNotification(translations[currentLang]['notification-invalid-email'], 'error');
                 return;
             }
             
@@ -215,15 +218,29 @@ function initFormValidation() {
             const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
             
             // Show loading notification
-            showNotification('Enviando mensaje...', 'info');
+            showNotification(translations[currentLang]['notification-sending'], 'info');
+            
+            // Email texts for different languages
+            const emailTexts = {
+                es: {
+                    noPhone: 'No proporcionado',
+                    noService: 'No especificado',
+                    noMessage: 'Sin mensaje adicional'
+                },
+                en: {
+                    noPhone: 'Not provided',
+                    noService: 'Not specified',
+                    noMessage: 'No additional message'
+                }
+            };
             
             // Prepare email template parameters for clinic
             const templateParamsClinica = {
                 from_name: name,
                 from_email: email,
-                phone: phone || 'No proporcionado',
-                service: serviceText || 'No especificado',
-                message: message || 'Sin mensaje adicional',
+                phone: phone || emailTexts[currentLang].noPhone,
+                service: serviceText || emailTexts[currentLang].noService,
+                message: message || emailTexts[currentLang].noMessage,
                 to_email: EMAILJS_CONFIG.TO_EMAIL, // Email de destino (usar {{to_email}} en el template)
                 reply_to: email // Para que puedas responder directamente al usuario
             };
@@ -232,7 +249,7 @@ function initFormValidation() {
             const templateParamsPaciente = {
                 to_name: name,
                 to_email: email,
-                service: serviceText || 'No especificado',
+                service: serviceText || emailTexts[currentLang].noService,
                 clinic_email: EMAILJS_CONFIG.TO_EMAIL
             };
             
@@ -255,7 +272,7 @@ function initFormValidation() {
             ])
             .then(function(responses) {
                 console.log('Emails enviados exitosamente!', responses);
-                showNotification('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.', 'success');
+                showNotification(translations[currentLang]['notification-success'], 'success');
                 contactForm.reset();
                 
                 // Close modal after success
@@ -266,14 +283,14 @@ function initFormValidation() {
                 }, 2000);
             }, function(error) {
                 console.error('Error al enviar el email:', error);
-                let errorMessage = 'Error al enviar el mensaje. ';
+                let errorMessage = translations[currentLang]['notification-error'];
                 
                 if (error.status === 405 || error.text === 'Method Not Allowed') {
-                    errorMessage += 'Por favor, verifica que los Template IDs estén configurados correctamente en EmailJS.';
+                    errorMessage += translations[currentLang]['notification-error-template'];
                 } else if (error.status === 400) {
-                    errorMessage += 'Verifica que todos los campos del formulario estén completos.';
+                    errorMessage += translations[currentLang]['notification-error-fields'];
                 } else {
-                    errorMessage += 'Por favor, inténtalo de nuevo o contacta directamente por teléfono.';
+                    errorMessage += translations[currentLang]['notification-error-retry'];
                 }
                 
                 showNotification(errorMessage, 'error');
@@ -618,8 +635,12 @@ const translations = {
         'doctora-luz-4': 'Máster y cursos específicos de ecografía musculoesquelética, intervencionismo ecoguiado y ondas de choque.',
         // Footer
         'footer-nosotros': 'NOSOTROS',
+        'footer-especialistas': 'Especialistas en Traumatología, Radiología y Rehabilitación.',
         'footer-donde': 'DÓNDE ENCONTRARNOS',
         'footer-horario': 'HORARIO',
+        'footer-horario-text': 'Lunes - Viernes: 16:00 - 20:00',
+        'footer-horario-sabado': 'Sábados: 9:00 - 14:00',
+        'footer-horario-domingo': 'Domingos: Cerrado',
         'footer-cita': 'CITA PREVIA',
         'footer-cita-text': 'Antes de acudir al centro es necesario pedir cita previa por teléfono o email.',
         'footer-pedir-cita': 'Pedir Cita',
@@ -633,7 +654,29 @@ const translations = {
         'contact-service-4': 'Bloqueo de nervio periférico',
         'contact-service-5': 'Tratamiento con ondas de choque focales',
         'contact-service-6': 'Otros',
-        'contact-description': 'Explíquenos el motivo y si tiene pruebas de imagen ya realizadas y cuáles (Radiografía, Ecografía, TAC, Resonancia...)'
+        'contact-description': 'Explíquenos el motivo y si tiene pruebas de imagen ya realizadas y cuáles (Radiografía, Ecografía, TAC, Resonancia...)',
+        // Contact Modal
+        'contact-modal-title': 'Contacto',
+        'contact-label-name': 'Nombre completo',
+        'contact-label-email': 'Email',
+        'contact-label-phone': 'Teléfono',
+        'contact-label-service': 'Servicio de interés',
+        'contact-select-service': 'Selecciona un servicio',
+        'contact-label-message': 'Mensaje',
+        'contact-submit-button': 'Enviar Mensaje',
+        // Footer Links
+        'footer-privacy': 'Política de Privacidad',
+        'footer-cookies': 'Política de Cookies',
+        'footer-legal': 'Aviso Legal',
+        // Notification Messages
+        'notification-required-fields': 'Por favor, completa los campos obligatorios.',
+        'notification-invalid-email': 'Por favor, introduce un email válido.',
+        'notification-sending': 'Enviando mensaje...',
+        'notification-success': '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.',
+        'notification-error': 'Error al enviar el mensaje. ',
+        'notification-error-template': 'Por favor, verifica que los Template IDs estén configurados correctamente en EmailJS.',
+        'notification-error-fields': 'Verifica que todos los campos del formulario estén completos.',
+        'notification-error-retry': 'Por favor, inténtalo de nuevo o contacta directamente por teléfono.'
     },
     en: {
         // Navigation
@@ -761,8 +804,12 @@ const translations = {
         'doctora-luz-4': 'Master\'s degree and specific courses in musculoskeletal ultrasound, ultrasound-guided interventionism and shock waves.',
         // Footer
         'footer-nosotros': 'ABOUT US',
+        'footer-especialistas': 'Specialists in Traumatology, Radiology and Rehabilitation.',
         'footer-donde': 'WHERE TO FIND US',
         'footer-horario': 'SCHEDULE',
+        'footer-horario-text': 'Monday - Friday: 4:00 PM - 8:00 PM',
+        'footer-horario-sabado': 'Saturdays: 9:00 AM - 2:00 PM',
+        'footer-horario-domingo': 'Sundays: Closed',
         'footer-cita': 'APPOINTMENT',
         'footer-cita-text': 'Before visiting the center, it is necessary to make an appointment by phone or email.',
         'footer-pedir-cita': 'Request Appointment',
@@ -776,7 +823,29 @@ const translations = {
         'contact-service-4': 'Peripheral nerve block',
         'contact-service-5': 'Focal shock wave treatment',
         'contact-service-6': 'Other',
-        'contact-description': 'Please explain the reason and if you have already performed imaging tests and which ones (X-ray, Ultrasound, CT, MRI...)'
+        'contact-description': 'Please explain the reason and if you have already performed imaging tests and which ones (X-ray, Ultrasound, CT, MRI...)',
+        // Contact Modal
+        'contact-modal-title': 'Contact',
+        'contact-label-name': 'Full Name',
+        'contact-label-email': 'Email',
+        'contact-label-phone': 'Phone',
+        'contact-label-service': 'Service of interest',
+        'contact-select-service': 'Select a service',
+        'contact-label-message': 'Message',
+        'contact-submit-button': 'Send Message',
+        // Footer Links
+        'footer-privacy': 'Privacy Policy',
+        'footer-cookies': 'Cookie Policy',
+        'footer-legal': 'Legal Notice',
+        // Notification Messages
+        'notification-required-fields': 'Please complete the required fields.',
+        'notification-invalid-email': 'Please enter a valid email address.',
+        'notification-sending': 'Sending message...',
+        'notification-success': 'Message sent successfully! We will contact you soon.',
+        'notification-error': 'Error sending message. ',
+        'notification-error-template': 'Please verify that the Template IDs are configured correctly in EmailJS.',
+        'notification-error-fields': 'Please verify that all form fields are complete.',
+        'notification-error-retry': 'Please try again or contact us directly by phone.'
     }
 };
 
@@ -810,7 +879,12 @@ function changeLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
+            // For option elements, update textContent; for others, update textContent
+            if (element.tagName === 'OPTION') {
+                element.textContent = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
+            }
         }
     });
     
