@@ -2,11 +2,11 @@
 // IMPORTANTE: Reemplaza estos valores con tus credenciales de EmailJS
 // Puedes obtenerlas en https://www.emailjs.com/
 const EMAILJS_CONFIG = {
-    SERVICE_ID: 'service_4bmsntl',      // Reemplaza con tu Service ID
+    SERVICE_ID: 'service_9oorokf',      // Reemplaza con tu Service ID
     TEMPLATE_ID_CLINICA: 'template_ij6i2up',   // Template para email a la clínica
     TEMPLATE_ID_PACIENTE: 'template_wh36zrg',   // Template para email de confirmación al paciente
     PUBLIC_KEY: 'AzQCfc2LEFIOZ37ja',       // Reemplaza con tu Public Key
-    TO_EMAIL: 'javi.portabales@gmail.com'  // Email de destino (clínica)
+    TO_EMAIL: 'dr.alfonsomaldonado@gmail.com'  // Email de destino (clínica)
 //    TO_EMAIL: 'dr.alfonsomaldonado@gmail.com'  // Email de destino
 
 };
